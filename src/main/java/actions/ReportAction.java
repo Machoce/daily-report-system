@@ -65,6 +65,7 @@ public class ReportAction extends ActionBase {
                     getRequestParam(AttributeConst.REP_TITLE),
                     getRequestParam(AttributeConst.REP_CONTENT),
                     null,
+                    null,
                     null);
 
             //日報情報登録
@@ -236,5 +237,22 @@ public class ReportAction extends ActionBase {
         }
     }
 
+    /**
+     * 承認を行う
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void approval() throws ServletException, IOException {
+
+            //idを条件に日報データを取得する
+            ReportView rv = service.findOne(toNumber(getRequestParam(AttributeConst.REP_ID)));
+            rv.setApproval(1);
+            List<String> errors = service.update(rv);
+
+            EmployeeView em = rv.getEmployee();
+            String name = em.getName();
+            putSessionScope(AttributeConst.FLUSH, name + (MessageConst.I_APPROVAL.getMessage()));
+            redirect(ForwardConst.ACT_REP, ForwardConst.CMD_INDEX);
+        }
 
 }

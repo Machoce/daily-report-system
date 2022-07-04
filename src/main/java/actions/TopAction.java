@@ -26,12 +26,12 @@ public class TopAction extends ActionBase {
     @Override
     public void process() throws ServletException, IOException {
 
-        service = new ReportService(); //追記
+        service = new ReportService();
 
         //メソッドを実行
         invoke();
 
-        service.close(); //追記
+        service.close();
 
     }
 

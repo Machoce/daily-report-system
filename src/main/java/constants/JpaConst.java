@@ -25,6 +25,8 @@ public interface JpaConst {
     String EMP_COL_DELETE_FLAG = "delete_flag"; //削除フラグ
 
     int ROLE_ADMIN = 1; //管理者権限ON(管理者)
+    int ROLE_MANAGER = 2; //課長権限ON
+    int ROLE_DIRECTOR = 3; //部長権限ON
     int ROLE_GENERAL = 0; //管理者権限OFF(一般)
     int EMP_DEL_TRUE = 1; //削除フラグON(削除済み)
     int EMP_DEL_FALSE = 0; //削除フラグOFF(現役)
@@ -74,5 +76,6 @@ String Q_EMP_COUNT_REGISTERED_BY_CODE_DEF = "SELECT COUNT(e) FROM Employee AS e 
     //指定した従業員が作成した日報の件数を取得する
     String Q_REP_COUNT_ALL_MINE = ENTITY_REP + ".countAllMine";
     String Q_REP_COUNT_ALL_MINE_DEF = "SELECT COUNT(r) FROM Report AS r WHERE r.employee = :" + JPQL_PARM_EMPLOYEE;
+
 
 }

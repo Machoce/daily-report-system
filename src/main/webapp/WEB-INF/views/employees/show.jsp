@@ -25,8 +25,11 @@
                 </tr>
                 <tr>
                     <th>権限</th>
-                    <td><c:choose>
+                    <td>
+                    <c:choose>
                             <c:when test="${employee.adminFlag == AttributeConst.ROLE_ADMIN.getIntegerValue()}">管理者</c:when>
+                            <c:when test="${employee.adminFlag == AttributeConst.ROLE_MANAGER.getIntegerValue()}">課長</c:when>
+                            <c:when test="${employee.adminFlag == AttributeConst.ROLE_DIRECTOR.getIntegerValue()}">部長</c:when>
                             <c:otherwise>一般</c:otherwise>
                         </c:choose></td>
                 </tr>
@@ -42,6 +45,7 @@
                 </tr>
             </tbody>
         </table>
+
 
         <p>
             <a href="<c:url value='?action=${actEmp}&command=${commEdit}&id=${employee.id}' />">この従業員情報を編集する</a>
